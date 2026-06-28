@@ -130,11 +130,11 @@
 
 <script>
 const videos = [
-  { src: 'uploads/unboxinggg.mp4',   label: 'Whey Pro — Unboxing UGC',        format: 'UGC' },
-  { src: 'uploads/0628.mp4',          label: 'Therapy Vault — Wellness UGC',   format: 'UGC' },
-  { src: 'uploads/book.mp4',          label: 'Digital Product Showcase',        format: 'Showcase' },
-  { src: 'uploads/solara-naturals-ugc-video.mp4', label: 'Solara Naturals — Product Ad', format: 'Ad' },
-  { src: 'uploads/hf_20260627_170914_bed7e2ee-d470-41f9-b16b-eda6f543610f.mp4', label: 'AI Influencer Demo', format: 'Demo' },
+  { src: 'uploads/unboxinggg.mp4',   poster: 'thumbs/unboxinggg.jpg',   label: 'Whey Pro — Unboxing UGC',        format: 'UGC' },
+  { src: 'uploads/0628.mp4',          poster: 'thumbs/0628.jpg',          label: 'Therapy Vault — Wellness UGC',   format: 'UGC' },
+  { src: 'uploads/book.mp4',          poster: 'thumbs/book.jpg',          label: 'Digital Product Showcase',        format: 'Showcase' },
+  { src: 'uploads/solara-naturals-ugc-video.mp4', poster: 'thumbs/solara-naturals-ugc-video.jpg', label: 'Solara Naturals — Product Ad', format: 'Ad' },
+  { src: 'uploads/hf_20260627_170914_bed7e2ee-d470-41f9-b16b-eda6f543610f.mp4', poster: 'thumbs/hf_20260627_170914_bed7e2ee-d470-41f9-b16b-eda6f543610f.jpg', label: 'AI Influencer Demo', format: 'Demo' },
 ];
 
 const grid = document.getElementById('vid-grid');
@@ -142,7 +142,7 @@ videos.forEach(v => {
   grid.innerHTML += `
   <div class="vid-card" onclick="openLB('${v.src}','${v.label}')" style="display:flex;flex-direction:column;gap:14px">
     <div style="position:relative;aspect-ratio:9/16;background:#0D1B2A;border:1px solid rgba(201,168,76,.25);border-radius:12px;overflow:hidden">
-      <video src="${v.src}" preload="metadata" muted playsinline style="width:100%;height:100%;object-fit:cover;display:block"></video>
+      <video src="${v.src}" poster="${v.poster}" preload="none" muted playsinline style="width:100%;height:100%;object-fit:cover;display:block"></video>
       <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,11,15,0) 55%,rgba(10,11,15,.55) 100%)"></div>
       <div class="vid-play" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(10,11,15,.55);backdrop-filter:blur(4px);border:1px solid rgba(201,168,76,.6);display:flex;align-items:center;justify-content:center;color:#C9A84C;transition:background .25s,color .25s">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
