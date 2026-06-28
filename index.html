@@ -142,14 +142,14 @@ videos.forEach(v => {
   grid.innerHTML += `
   <div class="vid-card" onclick="openLB('${v.src}','${v.label}')" style="display:flex;flex-direction:column;gap:14px">
     <div style="position:relative;aspect-ratio:9/16;background:#0D1B2A;border:1px solid rgba(201,168,76,.25);border-radius:12px;overflow:hidden">
-      <video src="${v.src}" poster="${v.poster}" preload="none" muted playsinline style="width:100%;height:100%;object-fit:cover;display:block"></video>
+      <video src="${v.src}" poster="${v.poster}" preload="none" muted playsinline style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block"></video>
       <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,11,15,0) 55%,rgba(10,11,15,.55) 100%)"></div>
       <div class="vid-play" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(10,11,15,.55);backdrop-filter:blur(4px);border:1px solid rgba(201,168,76,.6);display:flex;align-items:center;justify-content:center;color:#C9A84C;transition:background .25s,color .25s">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
       </div>
       <span style="position:absolute;bottom:12px;left:12px;background:rgba(10,11,15,.6);color:#F0EBE1;font-size:11px;font-weight:500;padding:4px 9px;border-radius:6px;letter-spacing:.03em">${v.format}</span>
     </div>
-    <span style="font-size:14px;color:rgba(240,235,225,.78);letter-spacing:.01em">${v.label}</span>
+    <span style="font-size:13px;font-weight:500;color:rgba(240,235,225,.85);letter-spacing:.01em;padding:0 4px;line-height:1.4;min-height:36px;display:flex;align-items:flex-start">${v.label}</span>
   </div>`;
 });
 
