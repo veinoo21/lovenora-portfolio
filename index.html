@@ -1,200 +1,205 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
+<title>Lovenora Abdi — AI UGC Video Creator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { background: #0A0B0F; }
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
-  .reveal.in { opacity: 1; transform: translateY(0); }
-  .navlink { color: rgba(240,235,225,.6); text-decoration: none; font-size: 14px; transition: color .2s ease; }
-  .navlink:hover { color: #C9A84C; }
-  .vid-card { transition: transform .3s ease, box-shadow .3s ease; }
-  .vid-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.5); }
-  .vid-card:hover .vid-play { background: #C9A84C; color: #0A0B0F; }
-  @media (max-width: 860px) {
-    .topnav-links { display: none !important; }
-    .hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-    .stats-grid { grid-template-columns: 1fr !important; }
-    .svc-grid { grid-template-columns: 1fr !important; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:#0A0B0F;color:#F0EBE1;font-family:Inter,sans-serif;overflow-x:hidden}
+  a{text-decoration:none}
+  .navlink{color:rgba(240,235,225,.6);font-size:14px;transition:color .2s}
+  .navlink:hover{color:#C9A84C}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:translateY(0)}
+  .vid-card{cursor:pointer;transition:transform .3s,box-shadow .3s}
+  .vid-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.5)}
+  .vid-card:hover .vid-play{background:#C9A84C;color:#0A0B0F}
+  .btn-primary{background:#C9A84C;color:#0A0B0F;font-weight:600;font-size:16px;padding:16px 32px;border-radius:12px;display:inline-block;transition:transform .2s,box-shadow .2s}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,168,76,.3)}
+  .btn-outline{border:1.5px solid #C9A84C;color:#C9A84C;font-weight:600;font-size:15px;padding:14px 28px;border-radius:12px;display:inline-block;transition:background .2s,color .2s}
+  .btn-outline:hover{background:#C9A84C;color:#0A0B0F}
+  #lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:999;align-items:center;justify-content:center;flex-direction:column;gap:16px}
+  #lightbox.open{display:flex}
+  #lightbox video{max-height:85vh;max-width:90vw;border-radius:12px}
+  #lb-close{position:absolute;top:24px;right:28px;font-size:32px;color:#F0EBE1;cursor:pointer;line-height:1;opacity:.7;transition:opacity .2s}
+  #lb-close:hover{opacity:1}
+  #lb-label{color:rgba(240,235,225,.65);font-size:14px;letter-spacing:.04em}
+  @media(max-width:860px){
+    .topnav-links{display:none!important}
+    .hero-grid{grid-template-columns:1fr!important;gap:40px!important}
+    .stats-grid{grid-template-columns:1fr!important}
+    .svc-grid{grid-template-columns:1fr!important}
   }
 </style>
-</helmet>
-<div style="background:#0A0B0F; color:#F0EBE1; font-family:Inter,sans-serif; min-height:100vh; overflow-x:hidden;">
+</head>
+<body>
 
-  <!-- NAV -->
-  <header style="position:sticky; top:0; z-index:50; backdrop-filter:blur(12px); background:rgba(10,11,15,.72); border-bottom:1px solid rgba(201,168,76,.12);">
-    <div style="max-width:1400px; margin:0 auto; padding:18px 7vw; display:flex; align-items:center; justify-content:space-between;">
-      <a href="#top" style="font-family:Playfair Display,serif; font-weight:600; font-size:19px; color:#F0EBE1; text-decoration:none; letter-spacing:.01em;">Lovenora Abdi</a>
-      <nav style="display:flex; gap:32px; align-items:center;" class="topnav-links">
-        <a href="#work" class="navlink">Work</a>
-        <a href="#services" class="navlink">Services</a>
-        <a href="#niches" class="navlink">Niches</a>
-        <a href="#contact" class="navlink">Contact</a>
-      </nav>
-    </div>
-  </header>
+<!-- NAV -->
+<header style="position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:rgba(10,11,15,.72);border-bottom:1px solid rgba(201,168,76,.12)">
+  <div style="max-width:1400px;margin:0 auto;padding:18px 7vw;display:flex;align-items:center;justify-content:space-between">
+    <a href="#top" style="font-family:'Playfair Display',serif;font-weight:600;font-size:19px;color:#F0EBE1;letter-spacing:.01em">Lovenora Abdi</a>
+    <nav style="display:flex;gap:32px;align-items:center" class="topnav-links">
+      <a href="#work" class="navlink">Work</a>
+      <a href="#services" class="navlink">Services</a>
+      <a href="#niches" class="navlink">Niches</a>
+      <a href="#contact" class="navlink">Contact</a>
+    </nav>
+  </div>
+</header>
 
-  <!-- HERO -->
-  <section id="top" style="min-height:88vh; display:flex; align-items:center; padding:72px 7vw; max-width:1400px; margin:0 auto;">
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; width:100%;" class="hero-grid">
-      <div style="display:flex; flex-direction:column; gap:24px; align-items:flex-start;">
-        <img src="uploads/pp.png" alt="Lovenora Abdi" style="width:180px; height:180px; border-radius:50%; object-fit:cover; border:2px solid #C9A84C;">
-        <div style="display:flex; flex-direction:column; gap:12px;">
-          <h2 style="font-family:Playfair Display,serif; font-weight:600; font-size:34px; line-height:1.1; color:#F0EBE1;">Lovenora Abdi</h2>
-          <span style="align-self:flex-start; background:rgba(201,168,76,.12); border:1px solid rgba(201,168,76,.4); color:#C9A84C; font-size:13px; font-weight:500; padding:6px 14px; border-radius:999px;">AI UGC video creator</span>
-        </div>
-        <p style="font-size:16px; line-height:1.7; color:rgba(240,235,225,.7); max-width:420px;">Faceless AI videos that convert — for wellness, digital, and lifestyle brands. Script to delivery, fast.</p>
+<!-- HERO -->
+<section id="top" style="min-height:88vh;display:flex;align-items:center;padding:72px 7vw;max-width:1400px;margin:0 auto">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;width:100%" class="hero-grid">
+    <div style="display:flex;flex-direction:column;gap:24px;align-items:flex-start">
+      <img src="uploads/pp.png" alt="Lovenora Abdi" style="width:180px;height:180px;border-radius:50%;object-fit:cover;border:2px solid #C9A84C">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <h2 style="font-family:'Playfair Display',serif;font-weight:600;font-size:34px;line-height:1.1;color:#F0EBE1">Lovenora Abdi</h2>
+        <span style="align-self:flex-start;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.4);color:#C9A84C;font-size:13px;font-weight:500;padding:6px 14px;border-radius:999px">AI UGC video creator</span>
       </div>
-      <div style="display:flex; flex-direction:column; gap:32px; align-items:flex-start;">
-        <h1 style="font-family:Playfair Display,serif; font-weight:700; font-size:clamp(56px,7vw,104px); line-height:.98; letter-spacing:-.02em; color:#F0EBE1;">AI video that <span style="font-style:italic; color:#C9A84C;">sells.</span></h1>
-        <a href="#work" style="background:#C9A84C; color:#0A0B0F; font-weight:600; font-size:16px; padding:16px 32px; border-radius:12px; text-decoration:none; transition:transform .2s ease, box-shadow .2s ease;" onMouseOver="{{ btnOver }}" onMouseOut="{{ btnOut }}">View my work</a>
-      </div>
+      <p style="font-size:16px;line-height:1.7;color:rgba(240,235,225,.7);max-width:420px">Faceless AI videos that convert — for wellness, digital, and lifestyle brands. Script to delivery, fast.</p>
+      <a href="#work" class="btn-primary">View my work</a>
     </div>
-  </section>
-  <div style="max-width:1400px; margin:0 auto; padding:0 7vw;"><div style="height:1px; background:linear-gradient(90deg, transparent, rgba(201,168,76,.5), transparent);"></div></div>
-
-  <!-- STATS BAR -->
-  <section style="background:#0D1B2A; padding:64px 7vw;" class="reveal">
-    <div style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:32px;" class="stats-grid">
-      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="3">
-        <div style="display:flex; flex-direction:column; gap:8px; text-align:center;">
-          <span style="font-family:Playfair Display,serif; font-weight:600; font-size:30px; color:#C9A84C;">{{ s.value }}</span>
-          <span style="font-size:14px; color:rgba(240,235,225,.65); letter-spacing:.02em;">{{ s.label }}</span>
-        </div>
-      </sc-for>
+    <div style="display:flex;flex-direction:column;gap:32px">
+      <h1 style="font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(56px,7vw,104px);line-height:.98;letter-spacing:-.02em;color:#F0EBE1">AI video that <span style="font-style:italic;color:#C9A84C">sells.</span></h1>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- PORTFOLIO -->
-  <section id="work" style="padding:96px 7vw; max-width:1400px; margin:0 auto; scroll-margin-top:80px;" class="reveal">
-    <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:48px; flex-wrap:wrap;">
-      <h2 style="font-family:Playfair Display,serif; font-weight:600; font-size:clamp(34px,4vw,48px);">Recent <span style="font-style:italic; color:#C9A84C;">work</span></h2>
-      <p style="font-size:15px; color:rgba(240,235,225,.5);">Tap any video to play.</p>
+<div style="max-width:1400px;margin:0 auto;padding:0 7vw"><div style="height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.5),transparent)"></div></div>
+
+<!-- STATS -->
+<section style="background:#0D1B2A;padding:64px 7vw" class="reveal">
+  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px" class="stats-grid">
+    <div style="display:flex;flex-direction:column;gap:8px;text-align:center">
+      <span style="font-family:'Playfair Display',serif;font-weight:600;font-size:30px;color:#C9A84C">AI-powered</span>
+      <span style="font-size:14px;color:rgba(240,235,225,.65);letter-spacing:.02em">every frame</span>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:24px; align-items:start;">
-      <sc-for list="{{ portfolio }}" as="v" hint-placeholder-count="5">
-        <div class="vid-card" style="cursor:pointer; display:flex; flex-direction:column; gap:14px;" onClick="{{ v.open }}">
-          <div style="position:relative; aspect-ratio:9/16; background:#0D1B2A; border:1px solid rgba(201,168,76,.25); border-radius:12px; overflow:hidden;">
-            <video src="{{ v.src }}" preload="metadata" muted playsinline data-thumb="true" style="width:100%; height:100%; object-fit:cover; display:block;"></video>
-            <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,11,15,0) 55%, rgba(10,11,15,.55) 100%);"></div>
-            <div class="vid-play" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:54px; height:54px; border-radius:50%; background:rgba(10,11,15,.55); backdrop-filter:blur(4px); border:1px solid rgba(201,168,76,.6); display:flex; align-items:center; justify-content:center; color:#C9A84C; transition:background .25s ease, color .25s ease;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-            <span style="position:absolute; bottom:12px; left:12px; background:rgba(10,11,15,.6); color:#F0EBE1; font-size:11px; font-weight:500; padding:4px 9px; border-radius:6px; letter-spacing:.03em;">{{ v.format }}</span>
-          </div>
-          <span style="font-size:14px; color:rgba(240,235,225,.78); letter-spacing:.01em;">{{ v.label }}</span>
-        </div>
-      </sc-for>
+    <div style="display:flex;flex-direction:column;gap:8px;text-align:center">
+      <span style="font-family:'Playfair Display',serif;font-weight:600;font-size:30px;color:#C9A84C">Any ratio</span>
+      <span style="font-size:14px;color:rgba(240,235,225,.65);letter-spacing:.02em">9:16 · 1:1 · 16:9</span>
     </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services" style="padding:64px 7vw 96px; max-width:1400px; margin:0 auto; scroll-margin-top:80px;" class="reveal">
-    <h2 style="font-family:Playfair Display,serif; font-weight:600; font-size:clamp(34px,4vw,48px); margin-bottom:48px;">What I <span style="font-style:italic; color:#C9A84C;">make</span></h2>
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:28px;" class="svc-grid">
-      <sc-for list="{{ services }}" as="c" hint-placeholder-count="3">
-        <div style="background:#0D1B2A; border-top:2px solid #C9A84C; border-radius:12px; padding:36px 32px; display:flex; flex-direction:column; gap:18px;">
-          <div style="color:#C9A84C;" dangerouslySetInnerHTML="{{ c.icon }}"></div>
-          <h3 style="font-family:Playfair Display,serif; font-weight:600; font-size:23px; color:#F0EBE1;">{{ c.title }}</h3>
-          <p style="font-size:15px; line-height:1.65; color:rgba(240,235,225,.65);">{{ c.desc }}</p>
-        </div>
-      </sc-for>
+    <div style="display:flex;flex-direction:column;gap:8px;text-align:center">
+      <span style="font-family:'Playfair Display',serif;font-weight:600;font-size:30px;color:#C9A84C">Fast</span>
+      <span style="font-size:14px;color:rgba(240,235,225,.65);letter-spacing:.02em">turnaround</span>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- NICHE TAGS -->
-  <section id="niches" style="padding:0 7vw 96px; max-width:1400px; margin:0 auto; scroll-margin-top:80px;" class="reveal">
-    <h3 style="font-size:13px; text-transform:uppercase; letter-spacing:.18em; color:rgba(240,235,225,.45); margin-bottom:22px;">Niches I create for</h3>
-    <div style="display:flex; flex-wrap:wrap; gap:12px;">
-      <sc-for list="{{ niches }}" as="n" hint-placeholder-count="7">
-        <span style="background:#3A5540; color:#F0EBE1; font-size:13px; font-weight:500; padding:8px 18px; border-radius:999px;">{{ n }}</span>
-      </sc-for>
+<!-- PORTFOLIO -->
+<section id="work" style="padding:96px 7vw;max-width:1400px;margin:0 auto;scroll-margin-top:80px" class="reveal">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:48px;flex-wrap:wrap">
+    <h2 style="font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(34px,4vw,48px)">Recent <span style="font-style:italic;color:#C9A84C">work</span></h2>
+    <p style="font-size:15px;color:rgba(240,235,225,.5)">Tap any video to play.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px;align-items:start" id="vid-grid"></div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="padding:64px 7vw 96px;max-width:1400px;margin:0 auto;scroll-margin-top:80px" class="reveal">
+  <h2 style="font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(34px,4vw,48px);margin-bottom:48px">What I <span style="font-style:italic;color:#C9A84C">make</span></h2>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px" class="svc-grid">
+    <div style="background:#0D1B2A;border-top:2px solid #C9A84C;border-radius:12px;padding:36px 32px;display:flex;flex-direction:column;gap:18px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M10 9l5 3-5 3z"/></svg>
+      <h3 style="font-family:'Playfair Display',serif;font-weight:600;font-size:23px;color:#F0EBE1">UGC product videos</h3>
+      <p style="font-size:15px;line-height:1.65;color:rgba(240,235,225,.65)">Faceless AI avatar, script to delivery. Authentic-feeling content built to convert.</p>
     </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" style="background:#0D1B2A; padding:120px 7vw; scroll-margin-top:80px;" class="reveal">
-    <div style="max-width:680px; margin:0 auto; display:flex; flex-direction:column; align-items:center; text-align:center; gap:20px;">
-      <h2 style="font-family:Playfair Display,serif; font-weight:700; font-size:clamp(44px,6vw,72px); line-height:1;">Ready to <span style="font-style:italic; color:#C9A84C;">create?</span></h2>
-      <p style="font-size:17px; color:rgba(240,235,225,.7); line-height:1.6;">Fast delivery. Professional quality. Faceless AI format across 9:16, 1:1, and 16:9.</p>
+    <div style="background:#0D1B2A;border-top:2px solid #C9A84C;border-radius:12px;padding:36px 32px;display:flex;flex-direction:column;gap:18px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+      <h3 style="font-family:'Playfair Display',serif;font-weight:600;font-size:23px;color:#F0EBE1">Wellness & digital brands</h3>
+      <p style="font-size:15px;line-height:1.65;color:rgba(240,235,225,.65)">Mental health, lifestyle, and coaches. Content that speaks to a calm, intentional audience.</p>
     </div>
-  </section>
-
-  <footer style="padding:40px 7vw; max-width:1400px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; border-top:1px solid rgba(240,235,225,.08);">
-    <span style="font-family:Playfair Display,serif; font-size:16px; color:rgba(240,235,225,.6);">Lovenora Abdi</span>
-    <span style="font-size:13px; color:rgba(240,235,225,.4);">AI UGC video creator · 2026</span>
-  </footer>
-
-  <!-- LIGHTBOX -->
-  <sc-if value="{{ activeSrc }}" hint-placeholder-val="">
-    <div onClick="{{ closeVideo }}" style="position:fixed; inset:0; z-index:100; background:rgba(6,7,10,.92); backdrop-filter:blur(8px); display:flex; align-items:center; justify-content:center; padding:5vh 6vw;">
-      <div onClick="{{ stop }}" style="position:relative; display:flex; flex-direction:column; align-items:center; gap:18px; max-height:90vh;">
-        <video src="{{ activeSrc }}" controls="controls" autoplay="autoplay" playsInline="true" style="max-height:78vh; max-width:90vw; border-radius:12px; box-shadow:0 24px 80px rgba(0,0,0,.6); background:#000;"></video>
-        <span style="font-size:14px; color:rgba(240,235,225,.7);">{{ activeLabel }}</span>
-      </div>
-      <button onClick="{{ closeVideo }}" aria-label="Close" style="position:fixed; top:24px; right:28px; width:44px; height:44px; border-radius:50%; border:1px solid rgba(240,235,225,.25); background:rgba(10,11,15,.6); color:#F0EBE1; cursor:pointer; display:flex; align-items:center; justify-content:center;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-      </button>
+    <div style="background:#0D1B2A;border-top:2px solid #C9A84C;border-radius:12px;padding:36px 32px;display:flex;flex-direction:column;gap:18px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      <h3 style="font-family:'Playfair Display',serif;font-weight:600;font-size:23px;color:#F0EBE1">Multi-platform ready</h3>
+      <p style="font-size:15px;line-height:1.65;color:rgba(240,235,225,.65)">TikTok, Reels, Pinterest, and Etsy listing video. Delivered ready to post everywhere.</p>
     </div>
-  </sc-if>
+  </div>
+</section>
 
+<!-- NICHES -->
+<section id="niches" style="padding:0 7vw 96px;max-width:1400px;margin:0 auto;scroll-margin-top:80px" class="reveal">
+  <h3 style="font-size:13px;text-transform:uppercase;letter-spacing:.18em;color:rgba(240,235,225,.45);margin-bottom:22px">Niches I create for</h3>
+  <div style="display:flex;flex-wrap:wrap;gap:12px">
+    <span style="background:#3A5540;color:#F0EBE1;font-size:13px;font-weight:500;padding:8px 18px;border-radius:999px">Mental health</span>
+    <span style="background:#3A5540;color:#F0EBE1;font-size:13px;font-weight:500;padding:8px 18px;border-radius:999px">Wellness</span>
+    <span style="background:#3A5540;color:#F0EBE1;font-size:13px;font-weight:500;padding:8px 18px;border-radius:999px">Digital products</span>
+    <span style="background:#3A5540;color:#F0EBE1;font-size:13px;font-weight:500;padding:8px 18px;border-radius:999px">Lifestyle</span>
+    <span style="background:#3A5540;color:#F0EBE1;font-size:13px;font-weight:500;padding:8px 18px;border-radius:999px">Coaches</span>
+    <span style="background:#3A5540;color:#F0EBE1;font-size:13px;font-weight:500;padding:8px 18px;border-radius:999px">ADHD</span>
+    <span style="background:#3A5540;color:#F0EBE1;font-size:13px;font-weight:500;padding:8px 18px;border-radius:999px">Therapy</span>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:#0D1B2A;padding:120px 7vw;scroll-margin-top:80px" class="reveal">
+  <div style="max-width:680px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:28px">
+    <h2 style="font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(44px,6vw,72px);line-height:1">Ready to <span style="font-style:italic;color:#C9A84C">create?</span></h2>
+    <p style="font-size:17px;color:rgba(240,235,225,.7);line-height:1.6">Fast delivery. Professional quality. Faceless AI format across 9:16, 1:1, and 16:9.</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:8px">
+      <a href="https://www.upwork.com/freelancers/~lovenora" class="btn-primary" target="_blank">Hire me on Upwork</a>
+      <a href="mailto:lovenora@email.com" class="btn-outline">Email me</a>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLB()">
+  <span id="lb-close" onclick="closeLB()">×</span>
+  <video id="lb-video" controls playsinline style="max-height:85vh;max-width:90vw;border-radius:12px" onclick="event.stopPropagation()"></video>
+  <span id="lb-label"></span>
 </div>
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  state = { activeSrc: null, activeLabel: '' };
-  componentDidMount() {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    this._esc = (e) => { if (e.key === 'Escape') this.setState({ activeSrc: null }); };
-    window.addEventListener('keydown', this._esc);
-  }
-  componentWillUnmount() { window.removeEventListener('keydown', this._esc); }
-  renderVals() {
-    const ico = (p) => ({ __html: `<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${p}</svg>` });
-    const open = (src, label) => () => this.setState({ activeSrc: src, activeLabel: label });
-    const vids = [
-      { src: 'uploads/solara-naturals-ugc-video.mp4', label: 'Solara Naturals — wellness UGC', format: '9:16' },
-      { src: 'uploads/unboxinggg.mp4', label: 'Product unboxing', format: '9:16' },
-      { src: 'uploads/book.mp4', label: 'Digital product — book promo', format: '9:16' },
-      { src: 'uploads/0628.mp4', label: 'Lifestyle reel', format: '9:16' },
-      { src: 'uploads/hf_20260627_170914_bed7e2ee-d470-41f9-b16b-eda6f543610f.mp4', label: 'Brand spotlight', format: '9:16' },
-    ];
-    return {
-      stats: [
-        { value: 'AI-powered', label: 'every frame' },
-        { value: 'Any ratio', label: '9:16 · 1:1 · 16:9' },
-        { value: 'Fast', label: 'turnaround' },
-      ],
-      portfolio: vids.map(v => ({ ...v, open: open(v.src, v.label) })),
-      services: [
-        { title: 'UGC product videos', desc: 'Faceless AI avatar, script to delivery. Authentic-feeling content built to convert.', icon: ico('<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M10 9l5 3l-5 3z"/>') },
-        { title: 'Wellness & digital brands', desc: 'Mental health, lifestyle, and coaches. Content that speaks to a calm, intentional audience.', icon: ico('<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2c-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>') },
-        { title: 'Multi-platform ready', desc: 'TikTok, Reels, Pinterest, and Etsy listing video. Delivered ready to post everywhere.', icon: ico('<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>') },
-      ],
-      niches: ['Mental health', 'Wellness', 'Digital products', 'Lifestyle', 'Coaches', 'ADHD', 'Therapy'],
-      activeSrc: this.state.activeSrc,
-      activeLabel: this.state.activeLabel,
-      closeVideo: () => this.setState({ activeSrc: null }),
-      stop: (e) => e.stopPropagation(),
-      btnOver: (e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(201,168,76,.25)'; },
-      btnOut: (e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; },
-    };
-  }
+
+<script>
+const videos = [
+  { src: 'uploads/unboxinggg.mp4',   label: 'Whey Pro — Unboxing UGC',        format: 'UGC' },
+  { src: 'uploads/0628.mp4',          label: 'Therapy Vault — Wellness UGC',   format: 'UGC' },
+  { src: 'uploads/book.mp4',          label: 'Digital Product Showcase',        format: 'Showcase' },
+  { src: 'uploads/solara-naturals-ugc-video.mp4', label: 'Solara Naturals — Product Ad', format: 'Ad' },
+  { src: 'uploads/hf_20260627_170914_bed7e2ee-d470-41f9-b16b-eda6f543610f.mp4', label: 'AI Influencer Demo', format: 'Demo' },
+];
+
+const grid = document.getElementById('vid-grid');
+videos.forEach(v => {
+  grid.innerHTML += `
+  <div class="vid-card" onclick="openLB('${v.src}','${v.label}')" style="display:flex;flex-direction:column;gap:14px">
+    <div style="position:relative;aspect-ratio:9/16;background:#0D1B2A;border:1px solid rgba(201,168,76,.25);border-radius:12px;overflow:hidden">
+      <video src="${v.src}" preload="metadata" muted playsinline style="width:100%;height:100%;object-fit:cover;display:block"></video>
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,11,15,0) 55%,rgba(10,11,15,.55) 100%)"></div>
+      <div class="vid-play" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(10,11,15,.55);backdrop-filter:blur(4px);border:1px solid rgba(201,168,76,.6);display:flex;align-items:center;justify-content:center;color:#C9A84C;transition:background .25s,color .25s">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <span style="position:absolute;bottom:12px;left:12px;background:rgba(10,11,15,.6);color:#F0EBE1;font-size:11px;font-weight:500;padding:4px 9px;border-radius:6px;letter-spacing:.03em">${v.format}</span>
+    </div>
+    <span style="font-size:14px;color:rgba(240,235,225,.78);letter-spacing:.01em">${v.label}</span>
+  </div>`;
+});
+
+function openLB(src, label) {
+  const lb = document.getElementById('lightbox');
+  const vid = document.getElementById('lb-video');
+  document.getElementById('lb-label').textContent = label;
+  vid.src = src;
+  vid.play();
+  lb.classList.add('open');
 }
+function closeLB() {
+  const lb = document.getElementById('lightbox');
+  const vid = document.getElementById('lb-video');
+  vid.pause();
+  vid.src = '';
+  lb.classList.remove('open');
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeLB(); });
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
